@@ -1,0 +1,205 @@
+.h头文件
+#ifdef _DEBUG
+#import "../bin/GifSmiley_d.dll" named_guids
+#else
+#import "../bin/GifSmiley.dll" named_guids
+#endif
+
+
+.cpp文件
+void ChatDialog::InsertGif(CRichEditUI* pRichEdit)
+{ 
+	_bstr_t bstrFileName1="c:\\Pic\\1.gif"; 
+
+
+	InsertAniSmiley(pRichEdit,(long)GetHWND(), bstrFileName1, ::GetSysColor(COLOR_WINDOW), 0);
+
+	_bstr_t bstrFileName2="c:\\Pic\\2.gif"; 
+
+
+	InsertAniSmiley(pRichEdit,(long)GetHWND(), bstrFileName2, ::GetSysColor(COLOR_WINDOW), 0);
+
+	_bstr_t bstrFileName3="c:\\Pic\\3.gif"; 
+
+
+	InsertAniSmiley(pRichEdit,(long)GetHWND(), bstrFileName3, ::GetSysColor(COLOR_WINDOW), 0);
+
+	_bstr_t bstrFileName4="c:\\Pic\\4.gif"; 
+
+
+	InsertAniSmiley(pRichEdit,(long)GetHWND(), bstrFileName4, ::GetSysColor(COLOR_WINDOW), 0);
+	
+	//_bstr_t bstrFileName5="c:\\Pic\\5.gif"; 
+
+
+	//InsertAniSmiley(pRichEdit,(long)GetHWND(), bstrFileName5, ::GetSysColor(COLOR_WINDOW), 0);
+}
+
+
+bool ChatDialog::InsertAniSmiley(CRichEditUI* pRichEdit, long hwndHostWindow, BSTR bstrFileName, OLE_COLOR clr, INT cy)
+{  
+	GifSmiley::IGifSmileyCtrl* lpAnimator;
+	::CoCreateInstance(GifSmiley::CLSID_CGifSmileyCtrl,NULL,CLSCTX_INPROC,GifSmiley::IID_IGifSmileyCtrl,(LPVOID*)&lpAnimator); 
+
+	if (lpAnimator==NULL)
+	{
+		return false;
+	}
+
+	COLORREF backColor = (COLORREF)(clr);
+	HWND hwnd = (HWND)(hwndHostWindow);
+	HRESULT hr;
+ 
+
+	IRichEditOle *pRichEditOle = pRichEdit->GetRichEditOle();
+	if (NULL==pRichEditOle)
+	{
+		return false;
+	} 
+
+
+	/*
+	ATL::CString strPicPath(bstrFileName);
+	ATL::CString strExt=strPicPath.Right(4);
+	if (strExt.CompareNoCase(_T(".gif")) && strExt.CompareNoCase(_T(".jpg")) && strExt.CompareNoCase(_T(".png")) && strExt.CompareNoCase(_T(".bmp"))) 
+		return FALSE;
+
+		*/
+
+	LPSTORAGE lpStorage=NULL;
+	LPOLEOBJECT	lpObject=NULL;
+	LPLOCKBYTES lpLockBytes = NULL;
+	LPOLECLIENTSITE lpClientSite = NULL;   
+	BSTR path = NULL;
+
+	//Create lockbytes
+	hr = ::CreateILockBytesOnHGlobal(NULL, TRUE, &lpLockBytes);
+	if (FAILED(hr))
+	{
+		return	 false;
+	}
+	//use lockbytes to create storage
+	SCODE sc = ::StgCreateDocfileOnILockBytes(lpLockBytes, STGM_SHARE_EXCLUSIVE|STGM_CREATE|STGM_READWRITE, 0, &lpStorage);
+	if (sc != S_OK)
+	{
+		lpLockBytes->Release();
+		return false;
+	}
+
+	// retrieve OLE interface for richedit   and  Get site
+	pRichEditOle->GetClientSite(&lpClientSite);
+	
+	try
+	{ 
+		//COM operation need BSTR, so get a BSTR
+		path = bstrFileName;
+
+		//Load the gif
+		lpAnimator->LoadFromFileSized(path, cy);
+
+		//Set back color
+		OLE_COLOR oleBackColor=(OLE_COLOR)backColor;
+		lpAnimator->put_BackColor(oleBackColor); 
+
+
+		//get the IOleObject
+		hr = lpAnimator->QueryInterface(IID_IOleObject, (void**)&lpObject);
+		if (FAILED(hr))
+		{
+			return	 false;
+		}
+
+		//Set it to be inserted
+		OleSetContainedObject(lpObject, TRUE);
+
+		//to insert into richedit, you need a struct of REOBJECT
+		REOBJECT reobject;
+		ZeroMemory(&reobject, sizeof(REOBJECT));
+
+		reobject.cbStruct = sizeof(REOBJECT);	
+
+		CLSID clsid;
+		hr =  lpObject->GetUserClassID(&clsid);
+
+
+		//set clsid
+		reobject.clsid = clsid;
+		//can be selected
+		reobject.cp = REO_CP_SELECTION;
+		//content, but not static
+		reobject.dvaspect = DVASPECT_CONTENT;
+		//goes in the same line of text line
+		reobject.dwFlags = REO_BELOWBASELINE;
+		//reobject.dwUser = (DWORD)myObject;
+		
+		//the very object
+		reobject.poleobj = lpObject;
+		//client site contain the object
+		reobject.polesite = lpClientSite;
+		//the storage 
+		reobject.pstg = lpStorage;
+
+		SIZEL sizel={0};
+		reobject.sizel = sizel;
+
+
+		LPOLECLIENTSITE lpObjectClientSite = NULL;   
+		hr =lpObject->GetClientSite(&lpObjectClientSite);
+		if(FAILED(hr) || lpObjectClientSite==NULL)
+		  lpObject->SetClientSite(lpClientSite); 
+
+		pRichEditOle->InsertObject(&reobject); 
+		//redraw the window to show animation
+		::RedrawWindow(hwnd,NULL, NULL, RDW_INVALIDATE);
+
+		if (lpClientSite)
+		{
+			lpClientSite->Release();
+			lpClientSite = NULL;
+		}
+		if (lpObject)
+		{
+			lpObject->Release();
+			lpObject = NULL;
+		}
+		if (lpStorage)
+		{
+			lpStorage->Release();
+			lpStorage = NULL;
+		}
+
+		if(lpAnimator)
+		{
+			 lpAnimator->Release();	
+			 lpAnimator=NULL;
+		}
+  
+	}
+	catch( ... )
+	{
+		if (lpClientSite)
+		{
+			lpClientSite->Release();
+			lpClientSite = NULL;
+		}
+		if (lpObject)
+		{
+			lpObject->Release();
+			lpObject = NULL;
+		}
+		if (lpStorage)
+		{
+			lpStorage->Release();
+			lpStorage = NULL;
+		}
+ 
+		if(lpAnimator)
+		{
+			lpAnimator->Release();	
+			lpAnimator=NULL;
+		}
+
+		return false;
+	}
+	return true;
+}

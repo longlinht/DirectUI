@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="1000,400" sizebox="4,4,6,6" mininfo="940,400" maxinfo="1920,1080" caption="0,0,0,60" roundcorner="3,3,3,3" bktrans="true">
+	<Font name="微软雅黑" size="18" bold="false" default="false"/>
+	<Font name="Arial" size="13" bold="false" default="false"/>
+	<Default name="VScrollBar" value="button1normalimage=&quot;file='scrollbar.bmp' source='0,90,16,106' mask='#FFFF00FF'&quot; button1hotimage=&quot;file='scrollbar.bmp' source='18,90,34,106' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='scrollbar.bmp' source='36,90,52,106' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='scrollbar.bmp' source='54,90,70,106' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='scrollbar.bmp' source='0,108,16,124' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='scrollbar.bmp' source='18,108,34,124' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='scrollbar.bmp' source='36,108,52,124' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='scrollbar.bmp' source='54,108,70,124' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='scrollbar.bmp' source='0,126,16,142' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='scrollbar.bmp' source='18,126,34,142' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;file='scrollbar.bmp' source='36,126,52,142' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='scrollbar.bmp' source='54,126,70,142' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='scrollbar.bmp' source='0,144,16,160' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='scrollbar.bmp' source='18,144,34,160' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='scrollbar.bmp' source='36,144,52,160' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='scrollbar.bmp' source='54,144,70,160' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='scrollbar.bmp' source='0,162,16,178' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='scrollbar.bmp' source='18,162,34,178' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='scrollbar.bmp' source='36,162,52,178' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='scrollbar.bmp' source='54,162,70,178' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+	<VerticalLayout name="" text="" tooltip="" float="false" bkcolor="#FF44A0E0" bkcolor2="FF2B93DD" bordercolor="#FF000000" borderwidth="1" inset="1,1,1,1">
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="60" bkcolor="#006B93B2" inset="4,4,4,4" >
+			<Container name="" text="" tooltip="" float="false" height="60" bkcolor="#00757676" inset="15,0,0,0">
+				<Label name="maintitle" text="Client Demo" font="0" tooltip="" float="false" bkcolor="#00B9D1EF" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA"/>
+			</Container>
+			<Button name="minbtn" text="" tooltip="" float="false" bordersize="0" width="19" height="19"  maxheight="19" maxwidth="19" normalimage="file='Minimize.png' source='0,0,19,19'" hotimage="file='Minimize_rollOver.png' source='0,0,19,19'" pushedimage="file='Minimize_press.png' source='0,0,19,19'"  />
+			<Button name="closebtn" text="" tooltip="" float="false" bordersize="0" width="19" height="19"  maxheight="19" maxwidth="19" normalimage="file='Close.png' source='0,0,19,19'" hotimage="file='Close_press.png' source='0,0,19,19'" pushedimage="file='Close_rollOver.png' source='0,0,19,19'"  />
+		</HorizontalLayout>
+		<Container name="" text="" tooltip="" float="false" height="1" bkcolor="#FFFFFFFF" />
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="40" bkcolor="#00B9D1EF" inset="10,6,0,0">
+			<HorizontalLayout name="" text="" tooltip="" float="false"  height="24" bkcolor="#00B9D1EF" childpadding="20">
+				<Button name="startbtn" text="" tooltip="Start" float="false" bordersize="0" width="14" height="14"  normalimage="file='start.png' source='0,0,14,14'" disabledimage="file='start2.png' source='0,0,14,14'" />
+				<Button name="pausebtn" text="" tooltip="Pause" float="false" bordersize="0" width="14" height="14"  normalimage="file='pause.png' source='0,0,14,14'" disabledimage="file='pause2.png' source='0,0,14,14'" />
+				<Button name="pausebtn2" text="" tooltip="Pause" float="false" bordersize="0" width="14" height="14"  normalimage="file='pause.png' source='0,0,14,14'" disabledimage="file='pause2.png' source='0,0,14,14'" />
+				<Button name="pausebtn3" text="" tooltip="Pause" float="false" bordersize="0" width="14" height="14"  normalimage="file='pause.png' source='0,0,14,14'" disabledimage="file='pause2.png' source='0,0,14,14'" />
+				<Button name="pausebtn4" text="" tooltip="Pause" float="false" bordersize="0" width="14" height="14"  normalimage="file='pause.png' source='0,0,14,14'" disabledimage="file='pause2.png' source='0,0,14,14'" />
+			</HorizontalLayout>
+			<HorizontalLayout name="" text="" tooltip="" float="false" width="200" height="24" bkcolor="#00B9D1EF" childpadding="10">
+				<Label name="usericon" float="false" width="16" height="16" bkcolor="#00B9D1EF" bkimage="file='user.png' source='0,0,16,16'"/>
+				<Label name="username" font="2" text="Tao" tooltip="Tao" endellipsis="true" float="false" bkcolor="#00B9D1EF" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA"/>	
+				<Label name="moneyicon" float="false" width="16" height="16" bkcolor="#00B9D1EF" bkimage="file='money.png' source='0,0,16,16'"/>
+				<Label name="money" font="1" text="333316.00" tooltip="16.00" endellipsis="true" float="false" bkcolor="#00B9D1EF" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA"/>
+			</HorizontalLayout>
+		</HorizontalLayout>
+		<Container name="" text="" tooltip="" float="false">
+			<List name="joblist" bkcolor="#FFE0F0FE" bordercolor="#FF1B4876" itemselectedbkcolor="#FFC1E3FF" itemhotbkcolor="#FFE9F5FF" inset="0,0,0,0" itemshowhtml="true" vscrollbar="true" hscrollbar="true" headerbkimage="file='list_header_bg.png'" itemalign="center" itembkcolor="#FFE2DDDF" itemaltbk="true" hscrollbar="false" menu="true">
+				<ListHeader height="24" menu="true">
+					<ListHeaderItem name="Name" text="Name" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Status" text="Status" font="1"  sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Upload" text="Upload" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Render" text="Render" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Download" text="Download" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Transfer" text="Transfer" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Fullspeed" text="Fullspeed" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Hosts" text="Used hosts" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+					<ListHeaderItem name="Path" text="Output path" font="1" sepimage="file='list_header_sep.png'" sepwidth="1"/>
+				</ListHeader>
+			</List>
+		</Container>
+		<Container name="" text="" tooltip="" float="false" height="30" bkcolor="#00757676" inset="25,0,0,0">
+			<Label name="statusbar" text="Total upload speed 0Kb/s    Total download speed 0Kb/s" font="1" tooltip="" float="false" bkcolor="#00B9D1EF" textcolor="#FFFFFFFF"/>
+		</Container>	
+	</VerticalLayout>
+</Window>

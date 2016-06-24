@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="405,234" caption="0,0,0,30" roundcorner="3,3,3,3" bktrans="true">
+	<Font name="微软雅黑" size="13" bold="false" default="true"/>
+	<Default name="CheckBox" value="textcolor=&quot;#FFbac0c5&quot; hottextcolor=&quot;#FF386382&quot; selectedtextcolor=&quot;#FF386382&quot; disabledtextcolor=&quot;#FFbac0c5&quot; textpadding=&quot;20,2,0,0&quot; align=&quot;left&quot; selectedimage=&quot;file='Icon/checked.png' dest='0,5,16,21'&quot; normalimage=&quot;file='Icon/unchecked.png' dest='0,5,16,21'&quot;" />
+	<VerticalLayout name="" text="" tooltip="" float="false" bkcolor="#FF44A0E0" bkcolor2="FF2B93DD">
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="32" bkcolor="#006B93B2" inset="4,4,4,4" >
+			<Container name="" text="" tooltip="" float="false" height="24" bkcolor="#00757676" inset="15,0,0,0">
+				<Label name="loginTitle" font="Arial" text="Client Demo" tooltip="" float="false" bkcolor="#00B9D1EF" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA"/>
+			</Container>
+			<Button name="minbtn" text="" tooltip="" float="false" bordersize="0" width="19" height="19"  maxheight="19" maxwidth="19" normalimage="file='Minimize.png' source='0,0,19,19'" hotimage="file='Minimize_rollOver.png' source='0,0,19,19'" pushedimage="file='Minimize_press.png' source='0,0,19,19'"  />
+			<Button name="closebtn" text="" tooltip="" float="false" bordersize="0" width="19" height="19"  maxheight="19" maxwidth="19" normalimage="file='Close.png' source='0,0,19,19'" hotimage="file='Close_press.png' source='0,0,19,19'" pushedimage="file='Close_rollOver.png' source='0,0,19,19'"  />
+		</HorizontalLayout>
+		<Container name="" text="" tooltip="" float="false" height="30" bkcolor="#00757676" />
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="40" bkcolor="#006B93B2" inset="40,6,20,6" childpading="10">
+			<Label name="userlbl" text="Username" tooltip="" float="false" width="70" height="28" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+			<Edit name="useredit" text="" tooltip="" float="false" width="190" height="28"  maxheight="40" />
+			<Button name="register"  text="<u>Register</u>" tooltip="" float="false"  width="80" height="28" showhtml="true" hottextcolor="#FFFFFFFF"/>
+		</HorizontalLayout>
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="40" bkcolor="#006B93B2" inset="40,6,20,6" childpading="10">
+			<Label name="pwdlbl" text="Password" tooltip="" float="false" width="70" height="28" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+			<Edit name="pwdedit" text="" tooltip="" float="false" width="190" height="28"  maxheight="40" />
+		</HorizontalLayout>	
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="40" bkcolor="#006B93B2" inset="40,6,20,6" childpading="10">
+			<CheckBox name="rempwd" text="Remember password" width="160" height="28" bkcolor="#006B93B2" textcolor="#FF000000" hottextcolor="#FFFFFFFF"/>
+			<CheckBox name="autologin" text="Login automatically" width="140" height="28" bkcolor="#006B93B2" textcolor="#FF000000" hottextcolor="#FFFFFFFF"/>
+		</HorizontalLayout>
+		<HorizontalLayout name="" text="" tooltip="" float="false" height="40" bkcolor="#006B93B2" inset="40,0,20,6" childpading="10">
+			<Button name="getbackpwd"  text="<u>Forgot password?</u>" tooltip="" float="false"  width="140" height="28" showhtml="true" hottextcolor="#FFFFFFFF"/>
+			<Button name="login"  text="Login" tooltip="" float="false"  width="140" height="28" textcolor="#FF000000" hottextcolor="#FFFFFFFF" 
+			pushedtextcolor="#77a8de" normalimage="file='Button/btn.png' corner='5,11,5,11' source='0,0,96,24'" 
+			hotimage="file='Button/btn.png' corner='5,11,5,11' source='0,24,96,48'" pushedimage="file='Button/btn.png' corner='5,11,5,11' source='0,48,96,72'" 
+			disabledimage="file='Button/btn.png' corner='5,11,5,11' source='0,72,96,96'"/>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

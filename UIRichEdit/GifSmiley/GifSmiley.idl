@@ -1,0 +1,59 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+// IGifSmileyCtrl
+[
+	object,
+	uuid(CB64102B-8CE4-4A55-B050-131C435A3A3F),
+	dual,
+	helpstring("IGifSmileyCtrl Interface"),
+	pointer_default(unique)
+]
+__interface IGifSmileyCtrl : public IDispatch
+{
+	[propput, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_BACKCOLOR)]
+	HRESULT BackColor([out,retval]OLE_COLOR* pclr);
+	[propget, bindable, requestedit, id(DISPID_HWND)]
+	HRESULT HWND([out, retval]long* pHWND);  
+	//Methods
+	[id(1)]	HRESULT LoadFromFile( [in] BSTR bstrFileName );
+	[id(2)]	HRESULT LoadFromFileSized( [in] BSTR bstrFileName, [in] INT nHeight );
+	[id(3)]	HRESULT SetHostWindow( [in] long hwndHostWindow, [in] INT nNotyfyMode );
+	[id(4)]	HRESULT InsertAniSmiley( [in] long hwndHostWindow, [in] BSTR bstrFileName, [in]OLE_COLOR clr, [in] INT cy);
+	[propget, id(5), helpstring("property FileName")] HRESULT FileName([out, retval] BSTR* pVal);
+	[id(6), helpstring("method SetRichEditOle")] HRESULT SetRichEditOle(IUnknown* pRichEditOle);
+};
+
+
+// IGifSmileyCtrl2
+[
+	object,
+	uuid(0418FB4B-E1AF-4e32-94AD-FF322C622AD3),
+	dual,
+	helpstring("IGifSmileyCtrl2 Interface"),
+	pointer_default(unique)
+]
+
+__interface IGifSmileyCtrl2 : public IDispatch
+{
+	[id(4)] HRESULT SetHint( [in] BSTR bstrHint);
+	[id(5)] HRESULT GetHint( [out, retval] BSTR * bstrHint);
+	[id(6)] HRESULT ShowHint();
+};
+
+//CGifSmileyCtrl
+[
+	coclass,
+	control,
+	default(IGifSmileyCtrl2),
+	threading(apartment),
+	vi_progid("GifSmiley.GifSmileyCtrl"),
+	progid("GifSmiley.GifSmileyCtrl.1"),
+	version(1.0),
+	uuid("DB35DD77-55E2-4905-8075-EB351BB5CBC1"),
+	helpstring("GifSmileyCtrl Class"),
+	registration_script("control.rgs")
+]

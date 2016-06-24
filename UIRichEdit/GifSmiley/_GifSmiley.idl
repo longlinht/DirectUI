@@ -1,0 +1,67 @@
+import "F:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\prsht.idl";
+import "F:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\mshtml.idl";
+import "f:\program files\microsoft visual studio 8\vc\platformsdk\include\dimm.idl";
+import "F:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\mshtmhst.idl";
+import "f:\program files\microsoft visual studio 8\vc\platformsdk\include\docobj.idl";
+import "F:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\exdisp.idl";
+import "F:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\objsafe.idl";
+
+[
+	object,
+	uuid(CB64102B-8CE4-4A55-B050-131C435A3A3F),
+	dual,
+	helpstring("IGifSmileyCtrl Interface"),
+	pointer_default(unique)
+] 
+#line 31 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+interface IGifSmileyCtrl : IDispatch {
+#line 34 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	[propput,bindable,requestedit,id(-501)] HRESULT  BackColor([in] OLE_COLOR clr);
+#line 36 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	[propget,bindable,requestedit,id(-501)] HRESULT  BackColor([out,retval] OLE_COLOR *pclr);
+#line 38 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	[propget,bindable,requestedit,id(-515)] HRESULT  HWND([out,retval] long *pHWND);
+#line 40 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	[id(1)] HRESULT  LoadFromFile([in] BSTR bstrFileName);
+	[id(2)] HRESULT  LoadFromFileSized([in] BSTR bstrFileName, [in] INT nHeight);
+	[id(3)] HRESULT  SetHostWindow([in] long hwndHostWindow, [in] INT nNotyfyMode);
+	[id(4)] HRESULT  InsertAniSmiley([in] long hwndHostWindow, [in] BSTR bstrFileName, [in] OLE_COLOR clr, [in] INT cy);
+	[propget,id(5),helpstring("property FileName")] HRESULT  FileName([out,retval] BSTR *pVal);
+};
+
+[
+	object,
+	uuid(0418FB4B-E1AF-4e32-94AD-FF322C622AD3),
+	dual,
+	helpstring("IGifSmileyCtrl2 Interface"),
+	pointer_default(unique)
+] 
+#line 57 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+interface IGifSmileyCtrl2 : IDispatch {
+#line 59 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	[id(4)] HRESULT  SetHint([in] BSTR bstrHint);
+	[id(5)] HRESULT  GetHint([out,retval] BSTR *bstrHint);
+	[id(6)] HRESULT  ShowHint();
+};
+
+
+[ version(1.0), uuid(AFA51984-FE21-4725-BE31-D16F4EBD0C89), helpstring("GifSmiley 1.0 Type Library") ]
+library GifSmiley
+{
+	importlib("stdole2.tlb");
+	importlib("olepro32.dll");
+
+	[
+		control,
+		version(1.0),
+		uuid(DB35DD77-55E2-4905-8075-EB351BB5CBC1),
+		helpstring("GifSmileyCtrl Class")
+	] 
+#line 78 "f:\\project\\comodo\\bak\\bak2\\gifsmiley\\gifsmiley\\gifsmiley\\gifsmileyctrl.h"
+	coclass CGifSmileyCtrl {
+		[default]	interface IGifSmileyCtrl2;
+		interface IGifSmileyCtrl;
+	};
+
+}
+
